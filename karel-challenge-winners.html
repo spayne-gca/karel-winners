@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.19 Payne Circle da Block Challenge Winners 🏆</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #F7931E;
+            --accent: #FDC500;
+            --dark: #1A1A2E;
+            --darker: #0F0F1E;
+            --light: #E8F4F8;
+            --success: #4ECDC4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridScroll 20s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes gridScroll {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .title-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Righteous', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+            text-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--success);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .mission-brief {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(78, 205, 196, 0.1));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-brief::before {
+            content: '// MISSION BRIEF';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--darker);
+            padding: 0 10px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .mission-brief h2 {
+            font-family: 'Righteous', cursive;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .mission-brief p {
+            line-height: 1.8;
+            color: var(--light);
+            margin-bottom: 0.8rem;
+        }
+
+        .mission-brief strong {
+            color: var(--success);
+        }
+
+        /* Block selector */
+        .block-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .block-btn {
+            font-family: 'Space Mono', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--primary);
+            color: var(--light);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .block-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--primary);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .block-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .block-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            border-color: var(--accent);
+        }
+
+        .block-btn.active {
+            background: var(--primary);
+            border-color: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Winners grid */
+        .winners-section {
+            margin: 4rem 0;
+        }
+
+        .block-content {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .block-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .block-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .block-title {
+            font-family: 'Righteous', cursive;
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .winner-count {
+            color: var(--success);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .winners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .winner-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(78, 205, 196, 0.05));
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: cardEntrance 0.6s ease-out backwards;
+        }
+
+        .winner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .winner-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .winner-card:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .winner-card:nth-child(1) { animation-delay: 0.05s; }
+        .winner-card:nth-child(2) { animation-delay: 0.1s; }
+        .winner-card:nth-child(3) { animation-delay: 0.15s; }
+        .winner-card:nth-child(4) { animation-delay: 0.2s; }
+        .winner-card:nth-child(5) { animation-delay: 0.25s; }
+        .winner-card:nth-child(6) { animation-delay: 0.3s; }
+        .winner-card:nth-child(7) { animation-delay: 0.35s; }
+        .winner-card:nth-child(8) { animation-delay: 0.4s; }
+        .winner-card:nth-child(9) { animation-delay: 0.45s; }
+        .winner-card:nth-child(10) { animation-delay: 0.5s; }
+
+        .trophy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+            animation: trophyFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes trophyFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .winner-name {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .winner-label {
+            color: var(--success);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .congrats-message {
+            font-family: 'Righteous', cursive;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--success);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Floating code symbols */
+        .code-symbol {
+            position: fixed;
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.15;
+            pointer-events: none;
+            animation: float 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        .code-symbol:nth-child(1) { left: 10%; animation-duration: 15s; }
+        .code-symbol:nth-child(2) { left: 30%; animation-duration: 18s; animation-delay: -5s; }
+        .code-symbol:nth-child(3) { left: 50%; animation-duration: 22s; animation-delay: -10s; }
+        .code-symbol:nth-child(4) { left: 70%; animation-duration: 16s; animation-delay: -3s; }
+        .code-symbol:nth-child(5) { left: 90%; animation-duration: 20s; animation-delay: -8s; }
+
+        @media (max-width: 768px) {
+            .winners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .block-selector {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .block-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating code symbols -->
+    <div class="code-symbol">{</div>
+    <div class="code-symbol">}</div>
+    <div class="code-symbol">( )</div>
+    <div class="code-symbol">[ ]</div>
+    <div class="code-symbol">< /></div>
+
+    <div class="container">
+        <header>
+            <div class="title-wrapper">
+                <h1>2.19 Payne Circle da Block Challenge</h1>
+            </div>
+            <p class="subtitle">🏆 Champions 🏆</p>
+        </header>
+
+        <div class="mission-brief">
+            <h2>🎯 The Challenge</h2>
+            <p><strong>Mission Objective:</strong> Karel needs to put down balls, circle the block, and pick up the balls without crashing into a wall and without getting caught by the Dawg Pound!</p>
+            <p><strong>Technical Requirements:</strong> If no balls are present, place balls on the first row only. Then Karel should circle (or square) the perimeter of the world. If balls are present, pick up the balls.</p>
+            <p><strong>⚠️ Warning:</strong> Don't run into a wall, because the Dawg Pound will get ya!</p>
+            <p><strong>Skills Demonstrated:</strong> Custom functions, if statements, for loops, while loops, and creative use of else statements.</p>
+        </div>
+
+        <div class="block-selector">
+            <button class="block-btn active" data-block="1">1st Block</button>
+            <button class="block-btn" data-block="2">2nd Block</button>
+            <button class="block-btn" data-block="4">4th Block</button>
+        </div>
+
+        <div class="winners-section">
+            <!-- 1st Block -->
+            <div class="block-content active" id="block-1">
+                <div class="block-header">
+                    <h2 class="block-title">1st Block Champions</h2>
+                    <p class="winner-count">13 Winners</p>
+                </div>
+                <div class="winners-grid">
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Aedan H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Alyssa S</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Brayden H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Braylon R</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Ethan L</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Ethan S</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jaden K #2</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jalyiah D</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jaylen J</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Kevin R</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Madeleine R</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Natalie R</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Raphael V</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2nd Block -->
+            <div class="block-content" id="block-2">
+                <div class="block-header">
+                    <h2 class="block-title">2nd Block Champions</h2>
+                    <p class="winner-count">22 Winners</p>
+                </div>
+                <div class="winners-grid">
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Amari R</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Anthony D</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Ash'lyn S</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Ava B</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Bradley J</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Bryan L</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Emma H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Gabriel H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Gabriel Y</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Gabriella T</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jaden K #2</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jasmine M</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jonathan U</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Layan H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Leah T</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Mekhi D</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Mila H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Morgan J</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Nah'veen G</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Ri'Cayla J</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Shazmin S</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Yusra G</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4th Block -->
+            <div class="block-content" id="block-4">
+                <div class="block-header">
+                    <h2 class="block-title">4th Block Champions</h2>
+                    <p class="winner-count">18 Winners</p>
+                </div>
+                <div class="winners-grid">
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Aamori H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Abdullah M</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Clinton S</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Damon F</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Danny G</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Dylan S</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Edmund G</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Elijah J</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Eric H</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Ethan U</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Gabriel J</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Gregory Z</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Jacob W</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Joseph L</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Katly A</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Kennedy D</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Myra R</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                    <div class="winner-card">
+                        <span class="trophy-icon">🏆</span>
+                        <h3 class="winner-name">Tessa M</h3>
+                        <p class="winner-label">Code Master</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p class="congrats-message">🎉 Congratulations to All Winners! 🎉</p>
+            <p class="footer-text">You navigated Karel through the challenge without getting caught by the Dawg Pound!<br>
+            Your mastery of functions, loops, and conditional logic is truly impressive.<br>
+            Keep coding and creating amazing things! 💻✨</p>
+        </footer>
+    </div>
+
+    <script>
+        // Block switching functionality
+        const blockBtns = document.querySelectorAll('.block-btn');
+        const blockContents = document.querySelectorAll('.block-content');
+
+        blockBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const blockNumber = btn.dataset.block;
+                
+                // Remove active class from all buttons and contents
+                blockBtns.forEach(b => b.classList.remove('active'));
+                blockContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                document.getElementById(`block-${blockNumber}`).classList.add('active');
+            });
+        });
+
+        // Add random animation delays to cards when switching blocks
+        function randomizeCardAnimations() {
+            const cards = document.querySelectorAll('.block-content.active .winner-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.05}s`;
+            });
+        }
+
+        // Call on page load
+        randomizeCardAnimations();
+
+        // Call when switching blocks
+        blockBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTimeout(randomizeCardAnimations, 50);
+            });
+        });
+    </script>
+</body>
+</html>
